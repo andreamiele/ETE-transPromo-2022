@@ -1,3 +1,9 @@
+//Il manque :
+//  -la fin du compteur de temps
+//  - l'animation pour se retourner
+//  - la fin du chronomètre quand il click sur la bonne page
+//  -
+
 const divResultat = document.querySelector("#resultat");
 
 var tabJeu = [
@@ -11,7 +17,7 @@ var tabJeu = [
 
 
 
-
+// Crée un tableau de valeur aléatoire
 var tabJeu2 = [
     Array.apply(null, Array(6)).map(function() { return Math.floor(Math.random() * 100 % 100); }),
     Array.apply(null, Array(6)).map(function() { return Math.floor(Math.random() * 100 % 100); }),
@@ -20,6 +26,8 @@ var tabJeu2 = [
     Array.apply(null, Array(6)).map(function() { return Math.floor(Math.random() * 100 % 100); }),
     Array.apply(null, Array(6)).map(function() { return Math.floor(Math.random() * 100 % 100); }),
 ];
+
+// Choisit la valeur aléatoire dans lequel il y a le sourire.
 
 var sourireColonne = entierAleatoire(0,5);
 var sourireLigne = entierAleatoire(0,5);
@@ -31,6 +39,7 @@ afficherTableau();
 
 function afficherTableau(){
     var txt ="";
+    var compteur=0;
 
     for(var i=0;i <tabJeu.length;i++)
     {
@@ -42,20 +51,14 @@ function afficherTableau(){
             }
             else
             {
-                txt +="<img src='img/logo.png' style='width:100px;height:100px' class='m-2'>";
+                txt +=jArray[compteur];
+                compteur = compteur +1;
             }
         }
     txt +="</div>";
     }
 
     divResultat.innerHTML = txt;
-}
-
-function getImage(valeur){
-    switch(valeur){
-        case 1 :
-            break
-    }
 }
 
 
@@ -91,3 +94,7 @@ function getTimer(){
     temps2 = new Date().getTime();
     texte.innerText=temps2-temps1+"s";
 }
+
+
+
+
