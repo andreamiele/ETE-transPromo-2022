@@ -1,5 +1,3 @@
-// Reste à faire :
-// remplir avec des lettres aléatoirement
 // chrono
 // sélectionner des mots
 // vérifier la selection et valider ou non
@@ -39,17 +37,18 @@ do {
 while( res === false)
 
 // On rempli le tableau avec des lettres aléatoires
-
+lesMots = remplirLettres(lesMots);
 
 // On affiche le tableau
 var html = "";
 for(var i = 0; i < lesMots.length; i++) {
-    html += "[ ";
+    html += "";
     for(var j = 0; j < lesMots[i].length; j++) {
-        html += "["+ lesMots[i][j] +"]";
+        html += "<button type='submit' class='btn-mot'>"+ lesMots[i][j] +"</button>";
     }
-    html += " ] <br/>";
+    html += " <br/>";
 }
+
 divResultat.innerHTML = html;
 
 function choisirUnMot(motsPlaces, motsPositifs) {
@@ -134,3 +133,17 @@ function placerUnMot(mot) {
     motsPlaces.push(mot);
     return true;
 }
+
+function remplirLettres(grille) {
+    for(var i = 0; i < grille.length; i++) {
+        for(var j = 0; j < grille[i].length; j++) {
+            var lettres = "abcdefghijklmnopqrstuvwxyz";
+            var rand = Math.floor(Math.random()*lettres.length);
+            if(grille[i][j] === 0)
+                grille[i][j] = lettres[rand];
+        }
+    }
+    return grille;
+}
+
+// Détection sélection de mot
