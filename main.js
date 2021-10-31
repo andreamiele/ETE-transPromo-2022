@@ -103,7 +103,7 @@ for (var k=0;k<=5;k++)
                 var imageNSL1 =imagesNS[numero];
                 imageu.setAttribute('src',imageNSL1);
             }
-            imageu.setAttribute('class','retourner card');
+            imageu.setAttribute('class','retourner card sheesh');
             div.appendChild(imageu);
             document.getElementById("1").appendChild(div)
 
@@ -127,7 +127,7 @@ for (var k2=0;k2<=5;k2++)
         var imageNSL2 =imagesNS[numero];
         imageu2.setAttribute('src',imageNSL2);
     }
-    imageu2.setAttribute('class','retourner card');
+    imageu2.setAttribute('class','retourner card sheesh');
     divL2.appendChild(imageu2);
     document.getElementById("2").appendChild(divL2)
 
@@ -151,7 +151,7 @@ for (var k3=0;k3<=5;k3++)
         var imageNSL3 =imagesNS[numero];
         imageu3.setAttribute('src',imageNSL3);
     }
-    imageu3.setAttribute('class','retourner card');
+    imageu3.setAttribute('class','retourner card sheesh');
     divL3.appendChild(imageu3);
     document.getElementById("3").appendChild(divL3)
 
@@ -175,7 +175,7 @@ for (var k4=0;k4<=5;k4++)
         var imageNSL4 =imagesNS[numero];
         imageu4.setAttribute('src',imageNSL4);
     }
-    imageu4.setAttribute('class','retourner card');
+    imageu4.setAttribute('class','retourner card sheesh');
     divL4.appendChild(imageu4);
     document.getElementById("4").appendChild(divL4)
 
@@ -199,7 +199,7 @@ for (var k5=0;k5<=5;k5++)
         var imageNSL5 =imagesNS[numero];
         imageu5.setAttribute('src',imageNSL5);
     }
-    imageu5.setAttribute('class','retourner card');
+    imageu5.setAttribute('class','retourner card sheesh');
     divL5.appendChild(imageu5);
     document.getElementById("5").appendChild(divL5)
 
@@ -223,7 +223,7 @@ for (var k6=0;k6<=5;k6++)
         var imageNSL6 =imagesNS[numero];
         imageu6.setAttribute('src',imageNSL6);
     }
-    imageu6.setAttribute('class','retourner card');
+    imageu6.setAttribute('class','retourner card sheesh');
     divL6.appendChild(imageu6);
     document.getElementById("6").appendChild(divL6)
 

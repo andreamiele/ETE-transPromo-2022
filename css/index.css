@@ -3,9 +3,6 @@
     src: url('../police/Roboto-Medium.ttf');
 }
 
-body {
-    background-image: linear-gradient(270deg, rgba(254, 225, 64, 0.76) 0%, rgba(250, 112, 154, 0.84) 100%);
-}
 
 h1 {
     color: #fff;
@@ -13,6 +10,13 @@ h1 {
     text-transform: uppercase;
     text-shadow: 0px 4px 4px rgba(255, 107, 0, 0.38);
     font-size: 3.5em;
+}
+
+h2 {
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0px 4px 4px rgba(255, 107, 0, 0.38);
+    font-size: 1.5em;
 }
 
 .form-control {
@@ -34,9 +38,42 @@ h1 {
     border-radius: 15px;
 }
 
+.btn-secondary {
+    background-color: #FEC5BB;
+    border: none;
+    padding: 10px;
+    box-shadow: 0px 4px 4px rgba(255, 107, 0, 0.38);
+    font-size: 1.5em;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin : 10px;
+    margin-top: 20px;
+}
+
+.btn-3 {
+    background-color: #E63946;
+    border: none;
+    padding: 10px;
+    box-shadow: 0px 4px 4px rgba(255, 107, 0, 0.38);
+    border-radius: 15px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-size: 2.5em;
+    opacity : 0.85;
+}
+
 .btn-primary:hover {
     background-color: #edb7ad;
     border: none;
+}
+
+.btn-3:hover {
+    background-color: #B42934;
+    opacity : 0.85;
+    border: none;
+    color: #fff;
 }
 
 .container {
@@ -71,3 +108,18 @@ a:hover {
     -o-filter: brightness(95%);
 }
 
+.bt1 {
+    background : linear-gradient(270deg, rgba(254, 225, 64, 0.76) 0%, rgba(250, 112, 154, 0.84) 100%);
+}
+
+.bt2 {
+    background : linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
+}
+
+.bt3 {
+    background : linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+}
+
+.bt4 {
+    background : linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+}
