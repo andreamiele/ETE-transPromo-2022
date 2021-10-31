@@ -1,0 +1,74 @@
+:root {
+    --sourire: "";
+    --passourire1:"";
+}
+
+body {
+    background-image: linear-gradient(270deg, rgba(254, 225, 64, 0.76) 0%, rgba(250, 112, 154, 0.84) 100%);
+    text-align: center;
+}
+
+h2 {
+    margin :0px;
+    position : relative;
+    align-content: center;
+}
+
+.betom {
+    display : inline-block;
+}
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.scene {
+    width: 1000px;
+    height: 700px;
+    margin: 20px;
+    perspective: 1000px;
+    position : relative;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card.pasretourner {
+    transform: rotateY(0deg);
+    background-color: red;
+
+}
+
+.card.retourner {
+    background-color: greenyellow;
+    transform: rotateY(180deg);
+    cursor: pointer;
+
+}
+
+.card2 {
+    display: inline-block;
+    position : relative;
+    transition: transform 0.5s ease 0s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    width: 100px;
+    height : 100px;
+    margin : 5px;
+    visibility: hidden;
+}
+.card {
+    display: inline-block;
+    position : relative;
+    transition: transform 0.5s ease 0s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    width: 100px;
+    height : 100px;
+    margin : 5px;
+}
