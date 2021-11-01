@@ -16,9 +16,9 @@
         <h1>Mots mélês ❤️</h1>
         <br/>
         <div id="resultat"></div>
+        <div id="aTrouver"></div>
         <script src="motscroises.js"></script>
         <br/>
-        <p>Mots à trouver : </p>
     </div>
 </section>
 

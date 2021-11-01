@@ -1,9 +1,10 @@
-// chrono
 // sélectionner des mots
+// chrono
 // vérifier la selection et valider ou non
 // système de points
 
 const divResultat = document.querySelector("#resultat");
+const divATrouver = document.querySelector("#aTrouver");
 
 // Générer un tableau de mot 13*13 rempli de 0
 var lesMots = new Array(13).fill(0);
@@ -14,6 +15,9 @@ for (var i = 0; i < 13; i++) {
 // Dictionnaire de mots positifs de -12 lettres (à faire par la team recherche)
 var motsPositifs = ['sourire', 'content', 'humour', 'amical', 'social', 'accepte', 'positif', 'reussite', 'succes', 'sympa', 'agreable', 'plaisant'];
 var motUtilisateur = 'arnaud';
+
+// Mots trouvés par le joueur
+var motsTrouves = [];
 
 // Placer 7 mots positifs aléatoires dans la grille
 var motsPlaces = [];
@@ -44,12 +48,13 @@ var html = "";
 for(var i = 0; i < lesMots.length; i++) {
     html += "";
     for(var j = 0; j < lesMots[i].length; j++) {
-        html += "<button type='submit' class='btn-mot'>"+ lesMots[i][j] +"</button>";
+        html += "<button type='submit' class='btn-mot' id='"+i.toLocaleString('fr-FR', {minimumIntegerDigits: 2, useGrouping:false}) + j.toLocaleString('fr-FR', {minimumIntegerDigits: 2, useGrouping:false})+"' onclick='selectionnerLettre(event)'>"+ lesMots[i][j] +"</button>";
     }
     html += " <br/>";
 }
 
 divResultat.innerHTML = html;
+actualiserAffichage();
 
 function choisirUnMot(motsPlaces, motsPositifs) {
     var motPasEncoreChoisi;
@@ -146,4 +151,88 @@ function remplirLettres(grille) {
     return grille;
 }
 
-// Détection sélection de mot
+var motEnCours = "";
+var coordonneesX = -1; // Coordonnées x de la lettre précédente
+var coordonneesY = -1; // Coordonnées y de la lettre précédente
+
+// Détection sélection de mot, chaque lettre a sa coordonnée en 2 digits (exemple 0000 (xx, yy)pour la lettre en haut à gauche)
+function selectionnerLettre(e) {
+    var ajouter = false;
+    var coordonneesXNow = 0;
+    var coordonneesYNow = 0;
+    if(e.target.style.backgroundColor !== "white") {
+        e.target.style = "background-color: white;";
+        coordonneesXNow = parseInt(e.target.id.toString().substr(0,2));
+        coordonneesYNow = parseInt(e.target.id.toString().substr(2,2));
+        if(coordonneesX > -1 && coordonneesY > -1) {
+            // pour l'instant sélection TOUT AUTOUR DE LA LETTRE tt le temps : à corriger si le temps
+            if(Number(coordonneesX) - Number(coordonneesXNow) === Number(0) || Number(coordonneesX) - Number(coordonneesXNow) === Number(1) || Number(coordonneesX) - Number(coordonneesXNow) === Number(-1)) {
+                if(Number(coordonneesY) - Number(coordonneesYNow) === Number(0) || Number(coordonneesY) - Number(coordonneesYNow) === Number(1) || Number(coordonneesY) - Number(coordonneesYNow) === Number(-1)) {
+                    // Si les coordonnées sont exactes
+                    ajouter = true;
+                }
+            }
+        }else {
+            ajouter = true;
+        }
+    }
+
+    if(ajouter === true) {
+        motEnCours += e.target.innerHTML;
+        coordonneesX = coordonneesXNow;
+        coordonneesY = coordonneesYNow;
+        if(verifierMot() === true) {
+            ajouter = false;
+            actualiserAffichage();
+        }
+    }if(ajouter === false){
+        motEnCours = "";
+        coordonneesX = -1;
+        coordonneesY = -1;
+        var lesBoutons = document.getElementsByClassName('btn-mot');
+        for (var i = 0 ; i < lesBoutons.length ; i++) {
+            lesBoutons[i].style.backgroundColor = '#FEC5BB';
+        }
+    }
+}
+
+function verifierMot() {
+    var indicateur = true;
+    if(motsTrouves.length !== motsPlaces.length) {
+        for(var i = 0; i < motsPlaces.length; i++) {
+            if(motsPlaces[i] === motEnCours) {
+                for(var j = 0; j < motsTrouves.length; j++) {
+                    if(motsTrouves[j] === motEnCours) {
+                        indicateur = false;
+                    }
+                }
+                if(indicateur === true) {
+                    motsTrouves.push(motEnCours);
+                    if(motsTrouves.length === motsPlaces.length)
+                        alert("Partie terminée !")
+                    return true;
+                }
+            }
+        }
+        return false;
+    }else {
+        alert("Partie terminée !")
+    }
+}
+
+function actualiserAffichage() {
+    var text = "<p class='mots'> Les mots à trouver sont : ";
+    for(var i = 0; i < motsPlaces.length; i++) {
+        var indicateur = false;
+        for(var j = 0; j < motsTrouves.length; j++) {
+            if(motsPlaces[i] === motsTrouves[j])
+                indicateur = true;
+        }
+        if(indicateur === false)
+            text += "<b>"+ motsPlaces[i] + "</b> ";
+    }
+    text += "</p>"
+    divATrouver.innerHTML = text;
+}
+
+
