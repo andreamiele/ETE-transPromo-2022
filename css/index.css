@@ -3,6 +3,11 @@
     src: url('../police/Roboto-Medium.ttf');
 }
 
+body {
+    background-image: linear-gradient(270deg, rgba(254, 225, 64, 0.76) 0%, rgba(250, 112, 154, 0.84) 100%);
+    text-align: center;
+}
+
 h1 {
     color: #fff;
     font-family: 'Roboto', sans-serif;

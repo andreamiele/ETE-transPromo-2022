@@ -1,25 +1,45 @@
-// sélectionner des mots
-// chrono
-// vérifier la selection et valider ou non
-// système de points
+// Version 0.1 fonctionnelle : mots, grille, séléction, vérif, points, chrono
+// Futures versions : mots en diagonales ? mots qui se croisent ? mots trouvés sur la grille à "barrer" ?
 
+// ----- On stock les différents div où vont se trouver la grille et les mots à trouver
+// ----- On cache le mot croisé pour le chrono
 const divResultat = document.querySelector("#resultat");
 const divATrouver = document.querySelector("#aTrouver");
+document.getElementById("resultat").style.visibility = "hidden";
 
-// Générer un tableau de mot 13*13 rempli de 0
+// ----- Déclarations de différentes variables pour le jeu
+var temps1 = new Date();
+var temps2 = new Date();
+var tempsFinal = new Date();
+var nbSoleils = 0;
+var cpt = 5;
+// ----- Chrono de 5 secondes, on rend visible ensuite et stock la date
+timer = setInterval(function(){
+    if(cpt > 0) {
+        --cpt;
+        document.getElementById("compteur").innerHTML = '...' + cpt+'...';
+    }else {
+        clearInterval(timer);
+        document.getElementById("resultat").style.visibility = "visible";
+        document.getElementById("compteur").style.visibility = "hidden";
+        temps1 = new Date().getTime();
+    }
+}, 1000);
+
+// ----- Génére un tableau de mot 13*13 rempli de 0
 var lesMots = new Array(13).fill(0);
 for (var i = 0; i < 13; i++) {
     lesMots[i] = new Array(13).fill(0);
 }
 
-// Dictionnaire de mots positifs de -12 lettres (à faire par la team recherche)
+// ----- Dictionnaire de mots positifs de -12 lettres (à faire par la team recherche)
 var motsPositifs = ['sourire', 'content', 'humour', 'amical', 'social', 'accepte', 'positif', 'reussite', 'succes', 'sympa', 'agreable', 'plaisant'];
 var motUtilisateur = 'arnaud';
 
-// Mots trouvés par le joueur
+// ----- Mots trouvés par le joueur
 var motsTrouves = [];
 
-// Placer 7 mots positifs aléatoires dans la grille
+// ----- Placer 7 mots positifs aléatoires dans la grille (variable lesMots)
 var motsPlaces = [];
 while (motsPlaces.length < 7) {
     // Si on le place horizontal ou vertical
@@ -31,19 +51,22 @@ while (motsPlaces.length < 7) {
     // On prend un mot au hasard dans les mots positifs, on vérifie qu'il n'a pas déjà été placé
     var alea = choisirUnMot(motsPlaces, motsPositifs);
 
+    // On place ce mot
     placerUnMot(motsPositifs[alea]);
 }
-// On ajoute le mot de l'utilisateur
+
+// ----- On ajoute le mot de l'utilisateur
 var res;
 do {
+    // Tant qu'on ne peut pas le placer par manque de place, on recommance
     res = placerUnMot(motUtilisateur);
 }
 while( res === false)
 
-// On rempli le tableau avec des lettres aléatoires
+// ----- On rempli le tableau avec des lettres aléatoires
 lesMots = remplirLettres(lesMots);
 
-// On affiche le tableau
+// ----- On affiche le tableau
 var html = "";
 for(var i = 0; i < lesMots.length; i++) {
     html += "";
@@ -52,10 +75,12 @@ for(var i = 0; i < lesMots.length; i++) {
     }
     html += " <br/>";
 }
-
 divResultat.innerHTML = html;
 actualiserAffichage();
 
+// ----- FONCTIONS -----
+
+// ----- Permet de choisir un mot dans la liste du dico des mots positifs par un aléatoire
 function choisirUnMot(motsPlaces, motsPositifs) {
     var motPasEncoreChoisi;
     var alea;
@@ -70,6 +95,7 @@ function choisirUnMot(motsPlaces, motsPositifs) {
     return alea;
 }
 
+// ----- Permet de vérifier si un mot peut rentrer dans une ligne, et qu'il n'y a pas déjà un mot
 function verifierLigne(lesMots, xDepart, yDepart, longueurMot) {
     var verif = true;
     for(var j = yDepart; j < longueurMot+yDepart; j++) {
@@ -79,6 +105,7 @@ function verifierLigne(lesMots, xDepart, yDepart, longueurMot) {
     return verif;
 }
 
+// ----- Permet de vérifier si un mot peut rentrer dans une colonne, et qu'il n'y a pas déjà un mot
 function verifierColonne(lesMots, xDepart, yDepart, longueurMot) {
     var verif = true;
     for(var j = xDepart; j < longueurMot+xDepart; j++) {
@@ -88,6 +115,7 @@ function verifierColonne(lesMots, xDepart, yDepart, longueurMot) {
     return verif;
 }
 
+// ----- Permet de placer un mot en faisant attention à la taille et la manière de le placer dans la grille
 function placerUnMot(mot) {
     // variable de sécurité
     var secuTours = 0;
@@ -139,6 +167,7 @@ function placerUnMot(mot) {
     return true;
 }
 
+// ----- Remplir les cases vides avec des lettres aléatoires
 function remplirLettres(grille) {
     for(var i = 0; i < grille.length; i++) {
         for(var j = 0; j < grille[i].length; j++) {
@@ -155,7 +184,7 @@ var motEnCours = "";
 var coordonneesX = -1; // Coordonnées x de la lettre précédente
 var coordonneesY = -1; // Coordonnées y de la lettre précédente
 
-// Détection sélection de mot, chaque lettre a sa coordonnée en 2 digits (exemple 0000 (xx, yy)pour la lettre en haut à gauche)
+// ----- Détection sélection de mot par l'user, chaque lettre a sa coordonnée en 2 digits (exemple 0000 (xx, yy)pour la lettre en haut à gauche)
 function selectionnerLettre(e) {
     var ajouter = false;
     var coordonneesXNow = 0;
@@ -196,6 +225,7 @@ function selectionnerLettre(e) {
     }
 }
 
+// ----- Vérification du mot séléctionné par l'user
 function verifierMot() {
     var indicateur = true;
     if(motsTrouves.length !== motsPlaces.length) {
@@ -209,19 +239,19 @@ function verifierMot() {
                 if(indicateur === true) {
                     motsTrouves.push(motEnCours);
                     if(motsTrouves.length === motsPlaces.length)
-                        alert("Partie terminée !")
+                        partieTerminee();
                     return true;
                 }
             }
         }
         return false;
-    }else {
-        alert("Partie terminée !")
-    }
+    }else
+        partieTerminee();
 }
 
+// ----- Fonction qui permet d'actualiser la liste des mots à trouver
 function actualiserAffichage() {
-    var text = "<p class='mots'> Les mots à trouver sont : ";
+    var text = "<p class='mots'> Les mots à trouver sont : <span class='caps'>";
     for(var i = 0; i < motsPlaces.length; i++) {
         var indicateur = false;
         for(var j = 0; j < motsTrouves.length; j++) {
@@ -231,8 +261,19 @@ function actualiserAffichage() {
         if(indicateur === false)
             text += "<b>"+ motsPlaces[i] + "</b> ";
     }
-    text += "</p>"
+    text += "</span></p>"
     divATrouver.innerHTML = text;
 }
 
+// ----- Fonction qui gère une fois que la partie est terminée (temps, points...)
+function partieTerminee() {
+    temps2 = new Date().getTime();
+    tempsFinal = (temps2 - temps1)*0.001; // temps en secondes
+    alert("Bravo ! En " + tempsFinal + " secondes !");
+    nbSoleils = Math.floor(1200/tempsFinal);
+    if(nbSoleils < 1)
+        nbSoleils = 1;
+    alert("Vous gagnez " + nbSoleils + " soleils !");
+    // Redirection ailleurs
+}
 

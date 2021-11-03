@@ -13,11 +13,12 @@
 
 <section class="d-flex align-items-center min-vh-100">
     <div class="container text-center">
-        <h1>Mots mélês ❤️</h1>
+        <h1>Mots mélês️</h1>
         <br/>
         <div id="resultat"></div>
+        <div id="compteur"></div>
         <div id="aTrouver"></div>
-        <script src="motscroises.js"></script>
+        <script src="js/motscroises.js"></script>
         <br/>
     </div>
 </section>
