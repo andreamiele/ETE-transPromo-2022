@@ -1,3 +1,17 @@
+<?php
+require_once "includes/functions.php";
+session_start();
+
+// Si l'user est connecté
+if(isUserConnected())
+    redirect('accueil.php');
+
+if (isset($_GET['error'])) { ?>
+    <div class="alert alert-danger">
+        Mauvais identifiants...
+    </div>
+<?php } ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -10,7 +24,7 @@
     <link rel="stylesheet" href="css/index.css"/>
 </head>
 
-<body style="background: linear-gradient(270deg, rgba(254, 225, 64, 0.76) 0%, rgba(250, 112, 154, 0.84) 100%)">
+<body>
 
 <img src="img/logo.png" alt="Logo" class="logo"/>
 
@@ -18,12 +32,12 @@
     <div class="container text-center">
         <h1>Bienvenue sur etƎ 😊</h1>
         <br/>
-        <form>
+        <form method="POST" action="index.php">
             <div class="form-group">
-                <input type="email" class="form-control" id="email" placeholder="Adresse e-mail">
+                <input type="email" class="form-control" id="email" placeholder="Adresse e-mail" name="email">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" id="mdp" placeholder="Mot de passe">
+                <input type="password" class="form-control" id="mdp" placeholder="Mot de passe" name="mdp">
             </div>
             <button type="submit" class="btn btn-primary">CONNEXION</button>
             <hr/>
@@ -35,4 +49,24 @@
 
 </body>
 
+<?php
+if (!empty($_POST['email']) and !empty($_POST['mdp'])) {
+    $email = $_POST['email'];
+    $mdp = $_POST['mdp'];
+    $req = getDb()->prepare('Select * FROM users WHERE email=? and password=?');
+    $req->execute(array($email, $mdp));
+    $profileValide = 0;
+    if ($req->rowCount() == 1) {
+        while ($res = $req->fetch()) {
+            $_SESSION['id'] = $res['id'];
+            $_SESSION['prenom'] = $res['prenom'];
+            $profileValide = 1;
+        }
+    }
+    if($profileValide > 0)
+        redirect("accueil.php");
+    else
+        redirect("index.php?error=true");
+}
+?>
 </html>

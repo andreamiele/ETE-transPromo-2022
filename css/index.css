@@ -106,6 +106,7 @@ a:hover {
     position: fixed;
     height: 50%;
     bottom: 0;
+    left: 0;
     filter: brightness(95%);
     -webkit-filter: brightness(95%);
     -moz-filter: brightness(95%);

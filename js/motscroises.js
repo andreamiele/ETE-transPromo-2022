@@ -17,7 +17,7 @@ var cpt = 5;
 timer = setInterval(function(){
     if(cpt > 0) {
         --cpt;
-        document.getElementById("compteur").innerHTML = '...' + cpt+'...';
+        document.getElementById("compteur").innerHTML =  cpt+'...';
     }else {
         clearInterval(timer);
         document.getElementById("resultat").style.visibility = "visible";
@@ -26,10 +26,10 @@ timer = setInterval(function(){
     }
 }, 1000);
 
-// ----- Génére un tableau de mot 13*13 rempli de 0
-var lesMots = new Array(13).fill(0);
-for (var i = 0; i < 13; i++) {
-    lesMots[i] = new Array(13).fill(0);
+// ----- Génére un tableau de mot 10*10 rempli de 0
+var lesMots = new Array(10).fill(0);
+for (var i = 0; i < 10; i++) {
+    lesMots[i] = new Array(10).fill(0);
 }
 
 // ----- Dictionnaire de mots positifs de -12 lettres (à faire par la team recherche)
@@ -121,18 +121,18 @@ function placerUnMot(mot) {
     var secuTours = 0;
     // On regarde d'abord la taille du mot pour le placer de manière à ce qu'il rentre dans la grille
     var tailleMotAPlace = mot.length;
-    var departPossible = 13 - tailleMotAPlace;
+    var departPossible = 10 - tailleMotAPlace;
     // On choisit une coordonnée de départ au hasard dans l'intervalle possible, il faut que les cases soient vides
     var xDepart = 0;
     var yDepart = 0;
     var coordonneesValides = false;
     while(coordonneesValides === false && secuTours < 1000) {
         if(horizontale === true) {
-            xDepart = Math.floor((Math.random()*13));
+            xDepart = Math.floor((Math.random()*10));
             yDepart = Math.floor((Math.random()*departPossible));
         }else {
             xDepart = Math.floor((Math.random()*departPossible));
-            yDepart = Math.floor((Math.random()*13));
+            yDepart = Math.floor((Math.random()*10));
         }
         // On vérifie que toutes les cases sont ok
         if(Number(lesMots[xDepart][yDepart]) === Number(0)) {

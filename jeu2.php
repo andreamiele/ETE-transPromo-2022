@@ -1,3 +1,15 @@
+<?php
+require_once "includes/functions.php";
+session_start();
+
+// Si l'user n'est pas connecté
+if(!isUserConnected())
+    redirect('index.php');
+
+// Faire les vérifications (avancement, date)
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,7 +25,7 @@
 
 <section class="d-flex align-items-center min-vh-100">
     <div class="container text-center">
-        <h1>Mots mélês️</h1>
+        <h1>Mots mélês</h1>
         <br/>
         <div id="resultat"></div>
         <div id="compteur"></div>
