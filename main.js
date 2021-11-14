@@ -1,10 +1,12 @@
 //Il manque :
-//  Rien si on click sur la mauvaise image et temps si on click sur la bonne
+//
 
 //---------------------------------------------------------------------------------------------------------------------------------
 //                                                          Paramètres du jeu
 //---------------------------------------------------------------------------------------------------------------------------------
 
+let tab_timing = [0,0,0,0,0,0,0];
+var compteur_timing = 0;
 const nbnS = 38 ; // Nombre d'images non souriantes dans le dossier
 const nbS= 8;  // Nombre d'images souriantes dans le dossier
 
@@ -54,6 +56,15 @@ function getTimer(event){
     var temps2 = new Date();
     temps2 = new Date().getTime();
     texte2.innerText= (temps2-now-7000)/1000 +"s";
+    tab_timing[compteur_timing]=(temps2-now-7000)/1000;
+    compteur_timing++;
+    if (compteur_timing!=7){
+        location.reload();
+    }
+    else
+    {
+        // Renvoyer sur une autre page (laquelle ?)
+    }
 
 }
 /*---------------------------------------------------------------------------------------------------------------------------------
@@ -91,10 +102,11 @@ for (var k=0;k<=5;k++)
             var numero = ligne*6+k;
             var div = document.createElement('div');
             div.setAttribute('class','card pasretourner');
-            div.setAttribute("onclick","getTimer(event)")
+
             var imageu = document.createElement('img')
             if (numero==numSourire) // On a la case où on doit mettre l'image souriante
             {
+                div.setAttribute("onclick","getTimer(event)");
                 var imageSL1 =imagesS[1];
                 imageu.setAttribute('src',imageSL1);
             }
@@ -115,10 +127,10 @@ for (var k2=0;k2<=5;k2++)
     numero = ligne*6+k2;
     var divL2 = document.createElement('div');
     divL2.setAttribute('class','card pasretourner');
-    divL2.setAttribute("onclick","getTimer(event)")
     var imageu2 = document.createElement('img')
     if (numero==numSourire) // On a la case où on doit mettre l'image souriante
     {
+        divL2.setAttribute("onclick","getTimer(event)");
         var imageSL2 =imagesS[1];
         imageu2.setAttribute('src',imageSL2);
     }
@@ -139,10 +151,10 @@ for (var k3=0;k3<=5;k3++)
     numero = ligne*6+k3;
     var divL3 = document.createElement('div');
     divL3.setAttribute('class','card pasretourner');
-    divL3.setAttribute("onclick","getTimer(event)")
     var imageu3 = document.createElement('img')
     if (numero==numSourire) // On a la case où on doit mettre l'image souriante
     {
+        divL3.setAttribute("onclick","getTimer(event)");
         var imageSL3 =imagesS[1];
         imageu3.setAttribute('src',imageSL3);
     }
@@ -163,10 +175,10 @@ for (var k4=0;k4<=5;k4++)
     numero = ligne*6+k4;
     var divL4 = document.createElement('div');
     divL4.setAttribute('class','card pasretourner');
-    divL4.setAttribute("onclick","getTimer(event)")
     var imageu4 = document.createElement('img')
     if (numero==numSourire) // On a la case où on doit mettre l'image souriante
     {
+        divL4.setAttribute("onclick","getTimer(event)");
         var imageSL4 =imagesS[1];
         imageu4.setAttribute('src',imageSL4);
     }
@@ -187,10 +199,10 @@ for (var k5=0;k5<=5;k5++)
     numero = ligne*6+k5;
     var divL5 = document.createElement('div');
     divL5.setAttribute('class','card pasretourner');
-    divL5.setAttribute("onclick","getTimer(event)")
     var imageu5 = document.createElement('img')
     if (numero==numSourire) // On a la case où on doit mettre l'image souriante
     {
+        divL5.setAttribute("onclick","getTimer(event)");
         var imageSL5 =imagesS[1];
         imageu5.setAttribute('src',imageSL5);
     }
@@ -211,10 +223,10 @@ for (var k6=0;k6<=5;k6++)
     numero = ligne*6+k6;
     var divL6 = document.createElement('div');
     divL6.setAttribute('class','card pasretourner');
-    divL6.setAttribute("onclick","getTimer(event)")
     var imageu6 = document.createElement('img')
     if (numero==numSourire) // On a la case où on doit mettre l'image souriante
     {
+        divL6.setAttribute("onclick","getTimer(event)");
         var imageSL6 =imagesS[1];
         imageu6.setAttribute('src',imageSL6);
     }
