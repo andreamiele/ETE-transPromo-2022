@@ -136,18 +136,26 @@ a:hover {
 
 .bt1 {
     background : linear-gradient(270deg, rgba(254, 225, 64, 0.76) 0%, rgba(250, 112, 154, 0.84) 100%);
+    height: 80px;
+    width: 80px;
 }
 
 .bt2 {
     background : linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
+    height: 80px;
+    width: 80px;
 }
 
 .bt3 {
     background : linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+    height: 80px;
+    width: 80px;
 }
 
 .bt4 {
     background : linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+    height: 80px;
+    width: 80px;
 }
 
 .bjr
