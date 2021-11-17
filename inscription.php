@@ -138,9 +138,12 @@ if (!empty($_POST['email']) and !empty($_POST['mdp']) and
     if ($reqVerifEmail->rowCount() < 1 && $mdp == $mdpVerif) {
         // Inscription du compte
         inscription($email, $mdp, $prenom, $nom, $avatar, $couleur);
-        // Les headers ne fonctionnent pas wsh
-        redirect("index.php?inscription=true");
+        echo '<script type="text/JavaScript"> 
+    window.location.replace("http://localhost:8888/index.php?inscription=true");
+     </script>';
     }
-    redirect("inscription.php?error=true");
+    echo '<script type="text/JavaScript"> 
+    window.location.replace("http://localhost:8888/inscription.php?error=true");
+     </script>';
 }
 ?>
