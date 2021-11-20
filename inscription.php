@@ -25,7 +25,7 @@ if (isset($_GET['error'])) { ?>
 </head>
 
 <body>
-
+<a href="index.php" class="back">Retour</a>
 <img src="img/logo.png" alt="Logo" class="logo"/>
 
 <section class="d-flex align-items-center min-vh-100">
@@ -57,18 +57,18 @@ if (isset($_GET['error'])) { ?>
                 <div class="form-group">
                     <h2>Choisissez votre couleur...</h2>
                     <label>
-                        <input type="radio" name="couleur" value="1" checked>
+                        <input type="radio" name="couleur" value="1" style="visibility: hidden" checked>
                         <div  class="btn btn-secondary bt1" onclick="changerBg(1)"></div>
                     </label>
                     <label>
-                        <input type="radio" name="couleur" value="2">
+                        <input type="radio" name="couleur" value="2" style="visibility: hidden">
                         <div  class="btn btn-secondary bt2" onclick="changerBg(2)"></div>
                     </label><label>
-                        <input type="radio" name="couleur" value="3">
+                        <input type="radio" name="couleur" value="3" style="visibility: hidden">
                         <div  class="btn btn-secondary bt3" onclick="changerBg(3)"></div>
                     </label>
                     <label>
-                        <input type="radio" name="couleur" value="4">
+                        <input type="radio" name="couleur" value="4" style="visibility: hidden">
                         <div  class="btn btn-secondary bt4" onclick="changerBg(4)"></div>
                     </label>
                 </div>
@@ -76,18 +76,18 @@ if (isset($_GET['error'])) { ?>
                     <h2>Choisissez votre avatar...</h2>
                     <label>
                         <input type="radio" name="avatar" value="1" checked>
-                        <img src="avatars/1.jpg" style="width: 110px; height: auto; border-radius: 110px; border: 2px solid white;">
+                        <img src="avatars/1.jpg" style="width: 100px; height: 100px; border-radius: 100px; border: 2px solid white; cursor: pointer;">
                     </label>
                     <label>
                         <input type="radio" name="avatar" value="2">
-                        <img src="avatars/2.jpg" style="width: 110px; height: auto; border-radius: 110px; border: 2px solid white;">
+                        <img src="avatars/2.jpg" style="width: 100px; height:  100px; border-radius: 100px; border: 2px solid white; cursor: pointer;">
                     </label><label>
                         <input type="radio" name="avatar" value="3">
-                        <img src="avatars/3.jpg" style="width: 110px; height: auto; border-radius: 110px; border: 2px solid white;">
+                        <img src="avatars/3.jpg" style="width: 100px; height:  100px; border-radius: 100px; border: 2px solid white; cursor: pointer;">
                     </label>
                     <label>
                         <input type="radio" name="avatar" value="4">
-                        <img src="avatars/4.jpg" style="width: 110px; height: auto; border-radius: 110px; border: 2px solid white;">
+                        <img src="avatars/4.jpg" style="width: 100px; height:  100px; border-radius: 100px; border: 2px solid white; cursor: pointer;">
                     </label>
                 </div>
             </div>
@@ -108,7 +108,7 @@ if (isset($_GET['error'])) { ?>
         }
         if(param === 3) {
             <?php $couleur = 3 ?>
-            document.body.style.background = 'linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%)';
+            document.body.style.background = 'linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)';
         }
         if(param === 4) {
             <?php $couleur = 4 ?>

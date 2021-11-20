@@ -65,6 +65,11 @@ if (!empty($_POST['email']) and !empty($_POST['mdp'])) {
         while ($res = $req->fetch()) {
             $_SESSION['id'] = $res['id'];
             $_SESSION['prenom'] = $res['prenom'];
+            $_SESSION['score'] = $res['score'];
+            $_SESSION['couleur'] = $res['couleur'];
+            $_SESSION['avatar'] = $res['avatar'];
+            $_SESSION['derniereConnexion'] = $res['derniereConnexion'];
+            $_SESSION['avancementJeu'] = $res['avancementJeu'];
             $profileValide = 1;
         }
     }

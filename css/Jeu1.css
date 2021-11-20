@@ -41,9 +41,10 @@ body {
 
 .card.retourner {
     opacity :1;
+    background: transparent;
+    border: 0;
     transform: rotateY(180deg);
     cursor: pointer;
-
 }
 
 .sheesh {

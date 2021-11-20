@@ -38,7 +38,7 @@ intervalID = setInterval(function() {
     {
         var temps1 = new Date();
         temps1 = new Date().getTime();
-        texte.innerText="A toi de jouer !";
+        texte.innerText="Trouve le maximum de visages souriants en une minute.";
         var el = document.querySelectorAll('.card')
         for (var j = 0; j < el.length; j++)
         {

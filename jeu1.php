@@ -1,39 +1,54 @@
-<?php
-$all_images = glob("/img/Jeu1/NoSourires/{*.jpg, *.JPG, *.JPEG, *.png, *.PNG}", GLOB_BRACE);
-$image_Souri = glob("/img/Jeu1/Sourires/{*.jpg, *.JPG, *.JPEG, *.png, *.PNG}", GLOB_BRACE);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <title>ETƎ - SMILE</title>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/index2.css"/>
+    <link rel="stylesheet" href="css/Jeu1.css"/>
 
 
+</head>
+<body style="background: linear-gradient(270deg, rgba(254, 225, 64, 0.76) 0%, rgba(250, 112, 154, 0.84) 100%)">
+<a href="index.php" class="back">Abandonner</a>
+<div class="scene center">
+  <div class="container-fluid">
+    <h2 class="text-center"></h2> <!-- Compteur -->
+    <h3></h3>
+  </div>
+  <div class="betom" id="1">
 
-// shuffle($all_images); // Pour randomiser, décommenter la ligne
-// shuffle($image_Souri); // Pareil
+  </div>
+  <h3 class="fixed-top text-center"></h3>
+  <div class="betom" id="2">
 
-$imagesN = array(); // Images sans sourire
-$imagesS = array(); // Image sourire
+  </div>
+  <div class="betom" id="3">
 
-foreach ($all_images as $index => $image) {
-    if ($index == 35) break;  // On ne prends que 35 images qui ne sourient pas
-    $image_name = basename($image);
-    array_push($imagesN,( "<img src='/img/Jeu1/NoSourires/{$image_name}' />"));
-}
+  </div>
+  <div class="betom" id="4">
 
-$imagesS = $image_Souri[1]
+  </div>
+  <div class="betom" id="5">
+
+  </div>
+  <div class="betom" id="6">
+
+  </div>
+</div>
 
 
-?>
-
-
-
-<script type="text/javascript">
-    var jArray= <?php echo json_encode($imagesN); ?>;
+<script >
+  var now = new Date().getTime();
+</script>
+<script src="js/main.js">
+  S();
+  nS();
 </script>
 
-<script type="text/javascript">
-    var jArray2= <?php echo json_encode($imagesS); ?>;
-</script>
-
-
-
-
-<script type="text/javascript" src="main.js" >
-
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</body>
+</html>
