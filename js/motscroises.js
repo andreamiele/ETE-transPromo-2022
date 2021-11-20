@@ -13,6 +13,7 @@ var temps2 = new Date();
 var tempsFinal = new Date();
 var nbSoleils = 0;
 var cpt = 5;
+
 // ----- Chrono de 5 secondes, on rend visible ensuite et stock la date
 timer = setInterval(function(){
     if(cpt > 0) {
@@ -34,14 +35,14 @@ for (var i = 0; i < 10; i++) {
 
 // ----- Dictionnaire de mots positifs de -12 lettres (à faire par la team recherche)
 var motsPositifs = ['sourire', 'content', 'humour', 'amical', 'social', 'accepte', 'positif', 'reussite', 'succes', 'sympa', 'agreable', 'plaisant'];
-var motUtilisateur = 'arnaud';
+var motUtilisateur = prenom.toLowerCase();
 
 // ----- Mots trouvés par le joueur
 var motsTrouves = [];
 
-// ----- Placer 7 mots positifs aléatoires dans la grille (variable lesMots)
+// ----- Placer 6 mots positifs aléatoires dans la grille (variable lesMots)
 var motsPlaces = [];
-while (motsPlaces.length < 7) {
+while (motsPlaces.length < 6) {
     // Si on le place horizontal ou vertical
     var pileFace = Math.random();
     var horizontale = true;
@@ -251,7 +252,7 @@ function verifierMot() {
 
 // ----- Fonction qui permet d'actualiser la liste des mots à trouver
 function actualiserAffichage() {
-    var text = "<p class='mots'> Les mots à trouver sont : <span class='caps'>";
+    var text = "<p class='mots'> <i>Les mots à trouver sont </i>: ";
     for(var i = 0; i < motsPlaces.length; i++) {
         var indicateur = false;
         for(var j = 0; j < motsTrouves.length; j++) {
@@ -259,9 +260,9 @@ function actualiserAffichage() {
                 indicateur = true;
         }
         if(indicateur === false)
-            text += "<b>"+ motsPlaces[i] + "</b> ";
+            text += "<b><span class='caps'>"+ motsPlaces[i] + "</span></b> ";
     }
-    text += "</span></p>"
+    text += "</p>"
     divATrouver.innerHTML = text;
 }
 
@@ -274,6 +275,7 @@ function partieTerminee() {
     if(nbSoleils < 1)
         nbSoleils = 1;
     alert("Vous gagnez " + nbSoleils + " soleils !");
-    // Redirection ailleurs
+    // Envoyer le score et le temps
+    document.location.href="accueil.php?score=" + nbSoleils + "&temps=" + (temps2-temps1) + "&jeu=motsCroises";
 }
 

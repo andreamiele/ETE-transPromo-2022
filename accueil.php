@@ -2,7 +2,22 @@
 require_once "includes/functions.php";
 session_start();
 
+// Si l'user n'est pas connecté
+if(!isUserConnected())
+    redirect('index.php');
+
+if(isset($_GET["jeu"]) && $_GET["jeu"] == 'motsCroises') {
+        // Vérifier qu'aucune données n'est rentrée aujourd'hui avant de mettre
+        $req = getDb()->prepare('UPDATE users set score = ? where id= ' . $_SESSION['id']);
+        $nouveauScore = $_SESSION['score'] + $_GET['score'];
+        $_SESSION['score'] = $nouveauScore;
+        $req->execute(array($nouveauScore));
+        // Plus qu'à mettre à jour la date, l'avancement, et matrice jeu croisés
+        //$_GET['score']
+        //$_GET['temps']
+}
 ?>
+<script src="js/changerBg.js"></script>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -16,7 +31,12 @@ session_start();
 </head>
 
 <body>
+<script>
+    var prenom = '<?php echo $_SESSION['prenom'] ?>';
+    var couleur = '<?php echo $_SESSION['couleur'] ?>';
 
+    changerBg(Number(couleur));
+</script>
 <img src="img/logo.png" alt="Logo" class="align-middle logo2"/>
 
 <section class="">
