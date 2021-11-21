@@ -276,6 +276,6 @@ function partieTerminee() {
         nbSoleils = 1;
     alert("Vous gagnez " + nbSoleils + " soleils !");
     // Envoyer le score et le temps
-    document.location.href="accueil.php?score=" + nbSoleils + "&temps=" + (temps2-temps1) + "&jeu=motsCroises";
+    document.location.href="accueil.php?score=" + nbSoleils + "&temps=" + tempsFinal + "&jeu=motsCroises";
 }
 

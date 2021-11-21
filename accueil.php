@@ -6,15 +6,11 @@ session_start();
 if(!isUserConnected())
     redirect('index.php');
 
+// Système d'ajout des données une fois que le jeu soit terminé
 if(isset($_GET["jeu"]) && $_GET["jeu"] == 'motsCroises') {
-        // Vérifier qu'aucune données n'est rentrée aujourd'hui avant de mettre
-        $req = getDb()->prepare('UPDATE users set score = ? where id= ' . $_SESSION['id']);
-        $nouveauScore = $_SESSION['score'] + $_GET['score'];
-        $_SESSION['score'] = $nouveauScore;
-        $req->execute(array($nouveauScore));
-        // Plus qu'à mettre à jour la date, l'avancement, et matrice jeu croisés
-        //$_GET['score']
-        //$_GET['temps']
+    inscrireDonnees(0);
+}else if(isset($_GET["jeu"]) && $_GET["jeu"] == 'matrice') {
+    inscrireDonnees(1);
 }
 ?>
 <script src="js/changerBg.js"></script>
@@ -69,16 +65,6 @@ if(isset($_GET["jeu"]) && $_GET["jeu"] == 'motsCroises') {
     </div>
 </section>
 <script>
-    function changerBg(param) {
-        if(param === 1)
-            document.body.style.background = 'linear-gradient(270deg, rgba(254, 225, 64, 0.76) 0%, rgba(250, 112, 154, 0.84) 100%)';
-        if(param === 2)
-            document.body.style.background = 'linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%)';
-        if(param === 3)
-            document.body.style.background = 'linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%)';
-        if(param === 4)
-            document.body.style.background = 'linear-gradient(90deg, #4b6cb7 0%, #182848 100%)';
-    }
     function Randomisation(){
         var p=Math.random();
         if (p<0.5){

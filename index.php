@@ -70,6 +70,7 @@ if (!empty($_POST['email']) and !empty($_POST['mdp'])) {
             $_SESSION['avatar'] = $res['avatar'];
             $_SESSION['derniereConnexion'] = $res['derniereConnexion'];
             $_SESSION['avancementJeu'] = $res['avancementJeu'];
+            $_SESSION['DonneesJeuCroises'] = $res['DonneesJeuCroises'];
             $profileValide = 1;
         }
     }

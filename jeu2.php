@@ -6,8 +6,6 @@ session_start();
 if(!isUserConnected())
     redirect('index.php');
 
-// Faire les vérifications (avancement, date)
-
 ?>
 <script src="js/changerBg.js"></script>
 <!DOCTYPE html>
