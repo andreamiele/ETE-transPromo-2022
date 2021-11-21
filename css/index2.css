@@ -17,8 +17,6 @@ h1 {
     font-weight: 900;
     max-font-size: 100%;
     min-font-size: 30%;
-
-
 }
 
 h2 {
@@ -169,20 +167,6 @@ a:hover {
 .bjr
 {
     margin-left: 20px;
-}
-
-.jouer
-{
-    margin-top: 200px;
-    width : 30vw;
-    height : 17vh;
-    max-height: 130%;
-    max-width: 130%;
-    min-height: 2em;
-    min-width: 4em;
-    background: linear-gradient(180deg, rgba(255, 106, 136, 0.18) 0%, rgba(255, 153, 172, 0.5) 100%);
-    text-align: center;
-    vertical-align:middle;
 }
 
 .jour {
