@@ -34,7 +34,7 @@ for (var i = 0; i < 10; i++) {
 }
 
 // ----- Dictionnaire de mots positifs de -12 lettres (à faire par la team recherche)
-var motsPositifs = ['sourire', 'content', 'humour', 'amical', 'social', 'accepte', 'positif', 'reussite', 'succes', 'sympa', 'agreable', 'plaisant'];
+var motsPositifs = ['paradis', 'loyal', 'honneur', 'chanceux', 'baiser', 'plaisir', 'fleur', 'amitie', 'manger', 'sourire', 'beaute', 'douceur', 'rire', 'danse', 'amour', 'soleil', 'epouser', 'theatre', 'reussir', 'adorable', 'courage', 'parfum', 'mariage', 'mignon', 'brillant', 'gloire', 'paix', 'chaleur'];
 var motUtilisateur = prenom.toLowerCase();
 
 // ----- Mots trouvés par le joueur

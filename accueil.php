@@ -46,7 +46,13 @@ if(isset($_GET["jeu"]) && $_GET["jeu"] == 'motsCroises') {
         <hr/>
         <?php if($_SESSION['avancementJeu'] < 2) {?>
         <p class="bjr2">Votre entraînement d'aujourd'hui est prêt...</p>
-        <button type="submit" class="jouer btn btn-primary" onclick="Randomisation()">JOUER <?php echo $_SESSION['avancementJeu']?>/2</button>
+            <?php
+            $ordre = 1;
+            if(date(d)%2==0) {
+                $ordre = 0;
+            }
+            ?>
+        <button type="submit" class="jouer btn btn-primary" onclick="Randomisation(<?php echo $ordre ?>, <?php echo $_SESSION['avancementJeu'] ?>)">JOUER <?php echo $_SESSION['avancementJeu']?>/2</button>
         <?php }else {?>
             <p class="bjr2">Mission remplie pour aujourd'hui ! A demain pour remporter encore plus de soleils &hearts; .</p>
         <?php } ?>
@@ -59,16 +65,23 @@ if(isset($_GET["jeu"]) && $_GET["jeu"] == 'motsCroises') {
     changerBg(Number(couleur));
 </script>
 <img src="img/logo.png" alt="Logo" class="align-middle logo2"/>
-<p class="soleils">Vous avez décroché <span style="color: yellow; font-weight: bold"><?php echo $_SESSION['score'] ?> </span>soleil(s) ! </p>
+<p class="soleils">Vous avez décroché <span style="color: yellow; font-weight: bold"><?php echo $_SESSION['score'] ?> </span>soleil(s) en tout ! </p>
 <script>
-    function Randomisation(){
-        var p=Math.random();
-        if (p<0.5){
+    // L'ordre des jeux dépendra du jour si il est pair ou non, ça nous permettra de faciliter
+    // le fait que ce soit le jeu 1 ou le jeu 2 en premier (économie de ligne)
+    function Randomisation(ordre, avancement){
+        // Si jour pair et pas d'avancement
+        if(ordre%2===0 && avancement === 0)
             document.location.href="jeu1.php"
-        }
-        else{
+        // Si jour pair et avancement
+        if(ordre%2===0 && avancement === 1)
             document.location.href="jeu2.php"
-        }
+        // Si jour impair et pas d'avancement
+        if(ordre%2!==0 && avancement === 0)
+            document.location.href="jeu2.php"
+        // Si jour impair et avancement
+        if(ordre%2!==0 && avancement === 1)
+            document.location.href="jeu1.php"
     }
 </script>
 
