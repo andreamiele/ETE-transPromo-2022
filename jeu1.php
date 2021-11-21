@@ -151,10 +151,9 @@ var temps2 = new Date();
 
   var imagesS =[]; //Images souriantes
   function S(){ // Crée le tableau avec le chemin des images souriantes
-      for (var i=1;i<nbS;i++)
-      {
+      i=entierAleatoire(1,8);
           imagesS.push('img/Jeu1/Sourires/'+i+'.jpg')
-      }
+
   }
 
   S();
@@ -195,7 +194,7 @@ var temps2 = new Date();
           if (numero == numSourire) // On a la case où on doit mettre l'image souriante
           {
               div.setAttribute("onclick", "getTimer(event)");
-              var imageSL1 = imagesS[1];
+              var imageSL1 = imagesS[0];
               imageu.setAttribute('src', imageSL1);
           } else // On doit mettre une image qui ne sourie pas
           {
@@ -215,7 +214,7 @@ var temps2 = new Date();
           if (numero == numSourire) // On a la case où on doit mettre l'image souriante
           {
               divL2.setAttribute("onclick", "getTimer(event)");
-              var imageSL2 = imagesS[1];
+              var imageSL2 = imagesS[0];
               imageu2.setAttribute('src', imageSL2);
           }
           else // On doit mettre une image qui ne sourie pas
@@ -236,7 +235,7 @@ var temps2 = new Date();
           if (numero == numSourire) // On a la case où on doit mettre l'image souriante
           {
               divL3.setAttribute("onclick", "getTimer(event)");
-              var imageSL3 = imagesS[1];
+              var imageSL3 = imagesS[0];
               imageu3.setAttribute('src', imageSL3);
           }
           else // On doit mettre une image qui ne sourie pas
@@ -259,7 +258,7 @@ var temps2 = new Date();
           if (numero == numSourire) // On a la case où on doit mettre l'image souriante
           {
               divL4.setAttribute("onclick", "getTimer(event)");
-              var imageSL4 = imagesS[1];
+              var imageSL4 = imagesS[0];
               imageu4.setAttribute('src', imageSL4);
           }
           else // On doit mettre une image qui ne sourie pas
@@ -282,7 +281,7 @@ var temps2 = new Date();
           if (numero == numSourire) // On a la case où on doit mettre l'image souriante
           {
               divL5.setAttribute("onclick", "getTimer(event)");
-              var imageSL5 = imagesS[1];
+              var imageSL5 = imagesS[0];
               imageu5.setAttribute('src', imageSL5);
           }
           else // On doit mettre une image qui ne sourie pas
@@ -305,7 +304,7 @@ var temps2 = new Date();
           if (numero == numSourire) // On a la case où on doit mettre l'image souriante
           {
               divL6.setAttribute("onclick", "getTimer(event)");
-              var imageSL6 = imagesS[1];
+              var imageSL6 = imagesS[0];
               imageu6.setAttribute('src', imageSL6);
           }
           else // On doit mettre une image qui ne sourie pas
@@ -372,7 +371,7 @@ var temps2 = new Date();
           if (numero == numSourire) // On a la case où on doit mettre l'image souriante
           {
               div.setAttribute("onclick", "getTimer(event)");
-              var imageSL1 = imagesS[1];
+              var imageSL1 = imagesS[0];
               imageu.setAttribute('src', imageSL1);
           } else // On doit mettre une image qui ne sourie pas
           {
@@ -394,7 +393,7 @@ var temps2 = new Date();
           if (numero == numSourire) // On a la case où on doit mettre l'image souriante
           {
               divL2.setAttribute("onclick", "getTimer(event)");
-              var imageSL2 = imagesS[1];
+              var imageSL2 = imagesS[0];
               imageu2.setAttribute('src', imageSL2);
           } else // On doit mettre une image qui ne sourie pas
           {
@@ -416,7 +415,7 @@ var temps2 = new Date();
           if (numero == numSourire) // On a la case où on doit mettre l'image souriante
           {
               divL3.setAttribute("onclick", "getTimer(event)");
-              var imageSL3 = imagesS[1];
+              var imageSL3 = imagesS[0];
               imageu3.setAttribute('src', imageSL3);
           } else // On doit mettre une image qui ne sourie pas
           {
@@ -438,7 +437,7 @@ var temps2 = new Date();
           if (numero == numSourire) // On a la case où on doit mettre l'image souriante
           {
               divL4.setAttribute("onclick", "getTimer(event)");
-              var imageSL4 = imagesS[1];
+              var imageSL4 = imagesS[0];
               imageu4.setAttribute('src', imageSL4);
           } else // On doit mettre une image qui ne sourie pas
           {
@@ -460,7 +459,7 @@ var temps2 = new Date();
           if (numero == numSourire) // On a la case où on doit mettre l'image souriante
           {
               divL5.setAttribute("onclick", "getTimer(event)");
-              var imageSL5 = imagesS[1];
+              var imageSL5 = imagesS[0];
               imageu5.setAttribute('src', imageSL5);
           } else // On doit mettre une image qui ne sourie pas
           {
@@ -482,7 +481,7 @@ var temps2 = new Date();
           if (numero == numSourire) // On a la case où on doit mettre l'image souriante
           {
               divL6.setAttribute("onclick", "getTimer(event)");
-              var imageSL6 = imagesS[1];
+              var imageSL6 = imagesS[0];
               imageu6.setAttribute('src', imageSL6);
           } else // On doit mettre une image qui ne sourie pas
           {
