@@ -20,8 +20,8 @@ function isUserConnected() {
 }
 
 function inscription($email, $mdp, $prenom, $nom, $avatar, $couleur) {
-    $reqInscriptionCompte = getDb()->prepare('INSERT INTO users(email, password, prenom, nom, avatar, couleur, derniereConnexion, avancementJeu, score, DonneesJeuMatrice, DonneesJeuCroises) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-    $reqInscriptionCompte->execute(array($email, $mdp, $prenom, $nom, $avatar, $couleur, date('Y-m-d H:i:s'), NULL, 0, NULL, NULL));
+    $reqInscriptionCompte = getDb()->prepare('INSERT INTO users(email, password, prenom, nom, avatar, couleur, derniereConnexion, nbJours, avancementJeu, score, DonneesJeuMatrice, DonneesJeuCroises) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+    $reqInscriptionCompte->execute(array($email, $mdp, $prenom, $nom, $avatar, $couleur, date('Y-m-d H:i:s'), 1, NULL, 0, NULL, NULL));
 }
 
 function inscrireDonnees($nb) {

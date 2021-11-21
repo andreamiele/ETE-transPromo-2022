@@ -54,7 +54,7 @@ if(isset($_GET["jeu"]) && $_GET["jeu"] == 'motsCroises') {
     </div>
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <h2 class="jour">C'EST VOTRE Y EME JOUR CONSECUTIF</h2>
+            <h2 class="jour">C'EST VOTRE <?php echo $_SESSION['nbJours'] ?> EME JOUR CONSECUTIF</h2>
         </div>
     </div>
     <br/>

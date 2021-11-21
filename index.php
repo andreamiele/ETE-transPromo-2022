@@ -69,11 +69,21 @@ if (!empty($_POST['email']) and !empty($_POST['mdp'])) {
             $_SESSION['couleur'] = $res['couleur'];
             $_SESSION['avatar'] = $res['avatar'];
             $_SESSION['derniereConnexion'] = $res['derniereConnexion'];
+            $_SESSION['nbJours'] = $res['nbJours'];
             $_SESSION['avancementJeu'] = $res['avancementJeu'];
             $_SESSION['DonneesJeuCroises'] = $res['DonneesJeuCroises'];
+            $_SESSION['DonneesJeuMatrice'] = $res['DonneesJeuMatrice'];
             $profileValide = 1;
         }
     }
+    $req = getDb()->prepare('Update users set derniereConnexion = ?, nbJours = ? WHERE id=' . $_SESSION['id']);
+    $dernierJour = getdate(strtotime($_SESSION['derniereConnexion']))[mday];
+    $nbJoursFinal = $_SESSION['nbJours'];
+    if($dernierJour == (date(d)-1))
+        $_SESSION['nbJours'] += 1;
+    else
+        $_SESSION['nbJours'] = 1;
+    $req->execute(array(date('Y-m-d'), $_SESSION['nbJours']));
     if($profileValide > 0)
         redirect("accueil.php");
     else
