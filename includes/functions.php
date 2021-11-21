@@ -21,7 +21,7 @@ function isUserConnected() {
 
 function inscription($email, $mdp, $prenom, $nom, $avatar, $couleur) {
     $reqInscriptionCompte = getDb()->prepare('INSERT INTO users(email, password, prenom, nom, avatar, couleur, derniereConnexion, nbJours, avancementJeu, score, DonneesJeuMatrice, DonneesJeuCroises) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-    $reqInscriptionCompte->execute(array($email, $mdp, $prenom, $nom, $avatar, $couleur, date('Y-m-d H:i:s'), 1, NULL, 0, NULL, NULL));
+    $reqInscriptionCompte->execute(array($email, $mdp, $prenom, $nom, $avatar, $couleur, date('Y-m-d H:i:s'), 1, 0, 0, NULL, NULL));
 }
 
 function inscrireDonnees($nb) {
@@ -47,7 +47,8 @@ function inscrireDonnees($nb) {
         }
     }
     if($valide == true) {
-        $req = getDb()->prepare('UPDATE users set score = ?, DonneesJeuCroises = ? where id= ' . $_SESSION['id']);
+        $_SESSION['avancementJeu'] += 1;
+        $req = getDb()->prepare('UPDATE users set score = ?, avancementJeu = ?, DonneesJeuCroises = ? where id= ' . $_SESSION['id']);
         $nouveauScore = $_SESSION['score'] + $_GET['score'];
         $_SESSION['score'] = $nouveauScore;
         $ancienTableau = json_decode($_SESSION[$jeu], true);
@@ -56,7 +57,7 @@ function inscrireDonnees($nb) {
             $_SESSION[$jeu] = json_encode($donnees);
         else
             $_SESSION[$jeu] = json_encode(array_merge($ancienTableau, $donnees));
-        $req->execute(array($nouveauScore, $_SESSION[$jeu]));
+        $req->execute(array($nouveauScore, $_SESSION['avancementJeu'],$_SESSION[$jeu]));
         echo '<script type="text/JavaScript"> 
     window.location.replace("http://localhost:8888/accueil.php");
      </script>';

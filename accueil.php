@@ -44,8 +44,12 @@ if(isset($_GET["jeu"]) && $_GET["jeu"] == 'motsCroises') {
         <p class="bjr">Nous sommes heureux de vous retrouver, il s'agit de votre <span style="color: yellow; font-weight: bold"><?php echo $_SESSION['nbJours'] ?></span> jour(s) consécutif(s) avec nous !</p>
         <br/>
         <hr/>
+        <?php if($_SESSION['avancementJeu'] < 2) {?>
         <p class="bjr2">Votre entraînement d'aujourd'hui est prêt...</p>
-        <button type="submit" class="jouer btn btn-primary" onclick="Randomisation()">JOUER</button>
+        <button type="submit" class="jouer btn btn-primary" onclick="Randomisation()">JOUER <?php echo $_SESSION['avancementJeu']?>/2</button>
+        <?php }else {?>
+            <p class="bjr2">Mission remplie pour aujourd'hui ! A demain pour remporter encore plus de soleils &hearts; .</p>
+        <?php } ?>
     </div>
 </section>
 <script>
