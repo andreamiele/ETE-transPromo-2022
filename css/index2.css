@@ -13,8 +13,12 @@ h1 {
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     text-shadow: 0px 4px 4px rgba(255, 107, 0, 0.38);
-    font-size: 3.5em;
+    font-size: 5vw;
     font-weight: 900;
+    max-font-size: 100%;
+    min-font-size: 30%;
+
+
 }
 
 h2 {
@@ -40,6 +44,8 @@ h2 {
     padding: 10px;
     box-shadow: 0px 4px 4px rgba(255, 107, 0, 0.38);
     font-size: 1.5em;
+    max-font-size: 100%;
+    min-font-size: 30%;
     border-radius: 15px;
 }
 
@@ -50,8 +56,8 @@ h2 {
     box-shadow: 0px 4px 4px rgba(255, 107, 0, 0.38);
     font-size: 1.5em;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 10em;
+    height: 10em;
     margin : 10px;
     margin-top: 20px;
 }
@@ -124,9 +130,11 @@ a:hover {
 
 .logo2{
     position: fixed;
-    height: 50%;
+
+    height : 50vh;
     left : 0;
-    top: 231px;
+    top: 20%;
+    z-index: -100;
     filter: brightness(95%);
     -webkit-filter: brightness(95%);
     -moz-filter: brightness(95%);
@@ -166,28 +174,36 @@ a:hover {
 .jouer
 {
     margin-top: 200px;
-    width: 836px;
-    height: 380px;
+    width : 30vw;
+    height : 17vh;
+    max-height: 130%;
+    max-width: 130%;
+    min-height: 2em;
+    min-width: 4em;
     background: linear-gradient(180deg, rgba(255, 106, 136, 0.18) 0%, rgba(255, 153, 172, 0.5) 100%);
+    text-align: center;
+    vertical-align:middle;
 }
 
 .jour {
     opacity:30%;
     color:#000000;
-    font-size: 3.5em;
+    font-size: 3vw;
     font-weight: 900;
 }
 
 .pts {
     background: #FEC5BB;
-    width: 267px;
-    height: 94px;
-    font-size: 2.5em;
+    width: 20vw;
+    height: 15vh;
+    font-size: 3vw;
     font-weight: 500;
+    text-align: center;
 }
 
 .bigbig{
-    font-size: 4em;
+    font-size: max(3.5vw, 35px);
+
 }
 
 .back {

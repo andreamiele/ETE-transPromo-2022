@@ -3,8 +3,8 @@
 // Connect to the database. Returns a PDO object
 function getDb() {
     $server = "localhost";
-    $username = "arnaudbscp";
-    $password = "azerty";
+    $username = "root";
+    $password = "";
     $db = "ete";
 
     return new PDO("mysql:host=$server;dbname=$db;charset=utf8", "$username", "$password",
