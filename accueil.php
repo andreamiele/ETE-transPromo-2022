@@ -65,7 +65,7 @@ if(isset($_GET["jeu"]) && $_GET["jeu"] == 'motsCroises') {
 
 
     <div class="text-center">
-        <button type="submit" class=" jouer btn btn-primary"> <h1>JOUER</h1></button>
+        <button type="submit" class=" jouer btn btn-primary" onclick="Randomisation()"> <h1>JOUER</h1></button>
     </div>
 </section>
 <script>
@@ -79,7 +79,15 @@ if(isset($_GET["jeu"]) && $_GET["jeu"] == 'motsCroises') {
         if(param === 4)
             document.body.style.background = 'linear-gradient(90deg, #4b6cb7 0%, #182848 100%)';
     }
-
+    function Randomisation(){
+        var p=Math.random();
+        if (p<0.5){
+            document.location.href="jeu1.php"
+        }
+        else{
+            document.location.href="jeu2.php"
+        }
+    }
 </script>
 
 </body>
