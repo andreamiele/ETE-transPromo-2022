@@ -176,8 +176,8 @@ var temps2 = new Date();
 
   var imagesS =[]; //Images souriantes
   function S(){ // Crée le tableau avec le chemin des images souriantes
-      i=entierAleatoire(1,8);
-          imagesS.push('img/Jeu1/Sourires/'+i+'.jpg')
+      numero=entierAleatoire(1,8);
+          imagesS.push('img/Jeu1/Sourires/'+numero+'.jpg')
 
   }
 
