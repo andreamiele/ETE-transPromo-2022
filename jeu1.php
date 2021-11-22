@@ -1,3 +1,13 @@
+<?php
+require_once "includes/functions.php";
+session_start();
+
+// Si l'user n'est pas connecté
+if(!isUserConnected())
+    redirect('index.php');
+
+?>
+<script src="js/changerBg.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +17,19 @@
     <link rel="stylesheet" href="css/index.css"/>
     <link rel="stylesheet" href="css/index2.css"/>
     <link rel="stylesheet" href="css/Jeu1.css"/>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body style="background: linear-gradient(270deg, rgba(254, 225, 64, 0.76) 0%, rgba(250, 112, 154, 0.84) 100%)" onLoad="setTimeout('Redirection()',67000)">
+<script>
+    var couleur = '<?php echo $_SESSION['couleur'] ?>';
+    changerBg(Number(couleur));
+</script>
 <a href="index.php" class="back">Abandonner</a>
 
 <div class="container-fluid">
+    <h1 style="text-align: center;">SMILE</h1>
+    <h4 style="text-align: center; color: white;">Trouve le maximum de visages souriants en une minute.</h4>
     <h2 class="text-center"></h2> <!-- Compteur -->
     <h3></h3> <!-- Temps de réaction -->
 </div>
@@ -44,13 +59,24 @@
 
 <script >
   var now = new Date().getTime();
-
   /*---------------------------------------------------------------------------------------------------------------------------------
                                             Redirection vers la page d'accueil après 1 minute.
   --------------------------------------------------------------------------------------------------------------------------------- */
 function Redirection()
 {
-    document.location.href="accueil.php"
+    var tempsFinalMoyen = 0;
+    for(var $i = 0; $i < tab_timing.length; $i++) {
+        tempsFinalMoyen += tab_timing[$i];
+    }
+    tempsFinalMoyen = tempsFinalMoyen/tab_timing.length;
+    alert("Bravo ! En " + tempsFinalMoyen + " secondes en moyenne !");
+    // On compte les points en fonction du nombre d'images trouvé et du temps final moyen
+    nbSoleils = Math.floor(50*(tab_timing.length)/tempsFinalMoyen);
+    if(nbSoleils < 1)
+        nbSoleils = 1;
+    alert("Vous gagnez " + nbSoleils + " soleils !");
+    // Envoyer le score et le temps
+    document.location.href="accueil.php?score=" + nbSoleils + "&temps=" + tempsFinalMoyen + "&jeu=matrice";
 }
   /*---------------------------------------------------------------------------------------------------------------------------------
                                             Refresh la div après avoir trouvé le bon visage
@@ -101,7 +127,6 @@ function Redirection()
         if (timer==60){
             var temps1 = new Date();
             temps1 = new Date().getTime();
-            texte.innerText="Trouve le maximum de visages souriants en une minute.";
             timer=timer-1
         }
          else {

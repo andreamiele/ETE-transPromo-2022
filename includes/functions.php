@@ -48,7 +48,12 @@ function inscrireDonnees($nb) {
     }
     if($valide == true) {
         $_SESSION['avancementJeu'] += 1;
-        $req = getDb()->prepare('UPDATE users set score = ?, avancementJeu = ?, DonneesJeuCroises = ? where id= ' . $_SESSION['id']);
+        $req;
+        if($nb==1) {
+            $req = getDb()->prepare('UPDATE users set score = ?, avancementJeu = ?, DonneesJeuMatrice = ? where id= ' . $_SESSION['id']);
+        }else {
+            $req = getDb()->prepare('UPDATE users set score = ?, avancementJeu = ?, DonneesJeuCroises = ? where id= ' . $_SESSION['id']);
+        }
         $nouveauScore = $_SESSION['score'] + $_GET['score'];
         $_SESSION['score'] = $nouveauScore;
         $ancienTableau = json_decode($_SESSION[$jeu], true);

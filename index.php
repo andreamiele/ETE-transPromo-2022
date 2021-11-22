@@ -58,22 +58,24 @@ if (isset($_GET['inscription'])) { ?>
 if (!empty($_POST['email']) and !empty($_POST['mdp'])) {
     $email = $_POST['email'];
     $mdp = $_POST['mdp'];
-    $req = getDb()->prepare('Select * FROM users WHERE email=? and password=?');
-    $req->execute(array($email, $mdp));
+    $req = getDb()->prepare('Select * FROM users WHERE email=?');
+    $req->execute(array($email));
     $profileValide = 0;
     if ($req->rowCount() == 1) {
         while ($res = $req->fetch()) {
-            $_SESSION['id'] = $res['id'];
-            $_SESSION['prenom'] = $res['prenom'];
-            $_SESSION['score'] = $res['score'];
-            $_SESSION['couleur'] = $res['couleur'];
-            $_SESSION['avatar'] = $res['avatar'];
-            $_SESSION['derniereConnexion'] = $res['derniereConnexion'];
-            $_SESSION['nbJours'] = $res['nbJours'];
-            $_SESSION['avancementJeu'] = $res['avancementJeu'];
-            $_SESSION['DonneesJeuCroises'] = $res['DonneesJeuCroises'];
-            $_SESSION['DonneesJeuMatrice'] = $res['DonneesJeuMatrice'];
-            $profileValide = 1;
+            if($res['password'] == password_verify($mdp ,$res['password'])) {
+                $_SESSION['id'] = $res['id'];
+                $_SESSION['prenom'] = $res['prenom'];
+                $_SESSION['score'] = $res['score'];
+                $_SESSION['couleur'] = $res['couleur'];
+                $_SESSION['avatar'] = $res['avatar'];
+                $_SESSION['derniereConnexion'] = $res['derniereConnexion'];
+                $_SESSION['nbJours'] = $res['nbJours'];
+                $_SESSION['avancementJeu'] = $res['avancementJeu'];
+                $_SESSION['DonneesJeuCroises'] = $res['DonneesJeuCroises'];
+                $_SESSION['DonneesJeuMatrice'] = $res['DonneesJeuMatrice'];
+                $profileValide = 1;
+            }
         }
     }
     $req = getDb()->prepare('Update users set derniereConnexion = ?, nbJours = ?, avancementJeu = ? WHERE id=' . $_SESSION['id']);
@@ -81,7 +83,7 @@ if (!empty($_POST['email']) and !empty($_POST['mdp'])) {
     $nbJoursFinal = $_SESSION['nbJours'];
     if($dernierJour == (date(d)-1))
         $_SESSION['nbJours'] += 1;
-    else
+    else if($dernierJour != date(d))
         $_SESSION['nbJours'] = 1;
 
     if($dernierJour < date(d))

@@ -137,7 +137,7 @@ if (!empty($_POST['email']) and !empty($_POST['mdp']) and
     $reqVerifEmail->execute(array($email));
     if ($reqVerifEmail->rowCount() < 1 && $mdp == $mdpVerif) {
         // Inscription du compte
-        inscription(htmlspecialchars($email), htmlspecialchars($mdp), htmlspecialchars($prenom), htmlspecialchars($nom), htmlspecialchars($avatar), htmlspecialchars($couleur));
+        inscription(htmlspecialchars($email), password_hash($mdp, PASSWORD_DEFAULT), htmlspecialchars($prenom), htmlspecialchars($nom), htmlspecialchars($avatar), htmlspecialchars($couleur));
         echo '<script type="text/JavaScript"> 
     window.location.replace("http://localhost:8888/index.php?inscription=true");
      </script>';

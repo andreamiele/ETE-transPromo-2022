@@ -18,7 +18,7 @@ if(!isUserConnected())
     <link rel="stylesheet" href="css/index.css"/>
     <link rel="stylesheet" href="css/index2.css"/>
     <link rel="stylesheet" href="css/motscroises.css"/>
-    <title>Mots croisés</title>
+    <title>ETE - Mots croisés</title>
 </head>
 <body>
 <script>
