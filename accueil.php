@@ -32,7 +32,7 @@ if(isset($_GET["jeu"]) && $_GET["jeu"] == 'motsCroises') {
 
 <header>
     <a href="deconnexion.php"><img src="img/deconnexion.png" alt="Deconnexion" class="deconnexion"/></a>
-    <a href="reglages.html"><img src="img/settings.png" alt="Réglages" class="settings"/></a>
+    <a href="reglages.php"><img src="img/settings.png" alt="Réglages" class="settings"/></a>
 </header>
 <div class="loader">
     <?php for($i = 0; $i < $_SESSION['score']; $i++)

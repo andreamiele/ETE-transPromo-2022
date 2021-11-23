@@ -26,6 +26,7 @@ if(!isUserConnected())
     changerBg(Number(couleur));
 </script>
 <a href="index.php" class="back">Abandonner</a>
+<a href=mailto:contact@arnaudbscp.fr" class="back2">Signaler un problème</a>
 
 <div class="container-fluid">
     <h1 style="text-align: center;">SMILE</h1>

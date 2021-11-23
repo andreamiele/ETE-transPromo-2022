@@ -28,6 +28,7 @@ if(!isUserConnected())
     changerBg(Number(couleur));
 </script>
 <a href="index.php" class="back">Abandonner</a>
+<a href=mailto:contact@arnaudbscp.fr" class="back2">Signaler un problème</a>
 <section class="d-flex align-items-center min-vh-100">
     <div class="container text-center">
         <h1>Mots mélês</h1>
