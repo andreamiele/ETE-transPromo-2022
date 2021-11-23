@@ -139,11 +139,11 @@ if (!empty($_POST['email']) and !empty($_POST['mdp']) and
         // Inscription du compte
         inscription(htmlspecialchars($email), password_hash($mdp, PASSWORD_DEFAULT), htmlspecialchars($prenom), htmlspecialchars($nom), htmlspecialchars($avatar), htmlspecialchars($couleur));
         echo '<script type="text/JavaScript"> 
-    window.location.replace("http://localhost:8888/index.php?inscription=true");
+    window.location.replace("index.php?inscription=true");
      </script>';
     }
     echo '<script type="text/JavaScript"> 
-    window.location.replace("http://localhost:8888/inscription.php?error=true");
+    window.location.replace("inscription.php?error=true");
      </script>';
 }
 ?>

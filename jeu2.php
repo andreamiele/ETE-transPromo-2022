@@ -31,7 +31,7 @@ if(!isUserConnected())
 <a href=mailto:contact@arnaudbscp.fr" class="back2">Signaler un problème</a>
 <section class="d-flex align-items-center min-vh-100">
     <div class="container text-center">
-        <h1>Mots mélês</h1>
+        <h1>SOY (Mots mélês)</h1>
         <br/>
         <div id="resultat"></div>
         <div id="compteur"></div>

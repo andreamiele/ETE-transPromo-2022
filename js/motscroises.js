@@ -127,7 +127,7 @@ function placerUnMot(mot) {
     var xDepart = 0;
     var yDepart = 0;
     var coordonneesValides = false;
-    while(coordonneesValides === false && secuTours < 10000) {
+    while(coordonneesValides === false && secuTours < 1000) {
         if(horizontale === true) {
             xDepart = Math.floor((Math.random()*11));
             yDepart = Math.floor((Math.random()*departPossible));

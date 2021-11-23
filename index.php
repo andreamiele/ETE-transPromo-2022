@@ -46,7 +46,7 @@ if (isset($_GET['inscription'])) { ?>
             </div>
             <button type="submit" class="btn btn-primary">CONNEXION</button>
             <hr/>
-            <h5>Pas encore de compte ? <a href="inscription.php">S'inscrire</a></h5>
+            <h3>Pas encore de compte ? <a href="inscription.php">S'inscrire</a></h3>
         </form>
     </div>
 </section>
