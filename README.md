@@ -1,7 +1,3 @@
-# ETE-transPromo-2022
-School project to improve self-confidence through daily mini game.
-
-
 <br />
 <h1 align="left">ETƎ</h1>
 
