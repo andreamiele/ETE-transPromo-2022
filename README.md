@@ -1,4 +1,3 @@
-<br />
 <h1 align="left">ETƎ</h1>
 
 ## About The Project
